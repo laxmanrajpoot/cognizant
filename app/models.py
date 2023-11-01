@@ -4,7 +4,7 @@ from django.db import models
 class Associate(models.Model):
     Sub_department=models.CharField(max_length=50)
     AIA_Avm=models.CharField(max_length=50)
-    Associate_ID=models.IntegerField()
+    Associate_ID=models.IntegerField(unique=True)
     Associate_Name=models.CharField(max_length=25)
     Grade=models.CharField(max_length=10)
     Bu_Classified=models.CharField(max_length=25)
@@ -37,14 +37,14 @@ class Associate(models.Model):
     Market_Na_GGM_Classified=models.CharField(max_length=25)
     Market=models.CharField(max_length=25)
     Market_Unit=models.CharField(max_length=25)
-    Poll_ID=models.IntegerField(25)
+    Poll_ID=models.IntegerField()
 
     def __str__(self):
-        return self.Associate_Name
+        return "{} {} {} ".format(self.Associate_ID, self.Associate_Name,  self.Project_Name)
 
 class leave(models.Model):
     Team=models.CharField(max_length=20)
-    Emp_num=models.IntegerField(primary_key=True)
+    Emp_num=models.IntegerField(unique=True)
     Name=models.CharField(max_length=25)
     Jan=models.IntegerField(default=0)
     Feb=models.IntegerField(default=0)
@@ -61,4 +61,4 @@ class leave(models.Model):
     Total=models.IntegerField(default=0)
 
     def __str__(self):
-        return self.Name
+         return "{}      {}".format(self.Emp_num,self.Name)

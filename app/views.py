@@ -4,6 +4,7 @@ import pandas as pd
 from openpyxl import load_workbook
 from .models import *
 from django.contrib import messages
+import django_tables2 as tables
 
 def index(request):
     return render(request,"index.html")
@@ -93,7 +94,6 @@ def Associatexls(request):
         pass
     return render(request,"upload_file.html")
 
-#leave form 
 def leave1(request):
     try:
         if request.method=="POST":
@@ -112,14 +112,12 @@ def leave1(request):
             Oct=request.POST.get('Oct')
             Nov=request.POST.get('Nov')
             Dec=request.POST.get('Dec')
-            if leave.objects.filter(Emp_num=Associate_id).count()>0:
-                return HttpResponse("Details Already Exists")
-            else:
-                Total=(int(Jan)+int(Feb)+int(Mar)+int(Apr)+int(May)+int(Jun)+int(Jul)+int(Sep)+int(Oct)+int(Nov)+int(Dec))
-                s1=leave(Team=Team,Emp_num=Associate_id,Name=Name,Jan=Jan,Feb=Feb,Mar=Mar,Apr=Apr,May=May,Jun=Jun,
+           
+            Total=(int(Jan)+int(Feb)+int(Mar)+int(Apr)+int(May)+int(Jun)+int(Jul)+int(Sep)+int(Oct)+int(Nov)+int(Dec))
+            s1=leave(Team=Team,Emp_num=Associate_id,Name=Name,Jan=Jan,Feb=Feb,Mar=Mar,Apr=Apr,May=May,Jun=Jun,
                         Jul=Jul,Aug=Aug,Sep=Sep,Oct=Oct,Nov=Nov,Dec=Dec,Total=Total)
-                s1.save()
-                messages.success(request,"Data Saved Sucessfully")
+            s1.save()
+            messages.success(request,"Data Saved Sucessfully")
                 
     except:
         pass
