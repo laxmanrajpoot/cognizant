@@ -5,6 +5,8 @@ from import_export.admin import ImportExportModelAdmin
 @admin.register(Associate)
 class associate(ImportExportModelAdmin):
     pass
+
 @admin.register(leave)
 class Leave(ImportExportModelAdmin):
     pass
+

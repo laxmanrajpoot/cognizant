@@ -86,7 +86,7 @@ def create_df(file_path):
 def Associatexls(request):
     try:
         if request.method== "POST":
-            file=request.FILES['file']
+            file=request.FILES['file1']
             obj=File.objects.create(file=file)
             create_df(obj.file)
     except:
@@ -126,9 +126,3 @@ def leave1(request):
     return render(request,"leave_form.html")
 
 
-def file(request):
-    if request.method=="POST":
-        file=request.POST.get('file1')
-        df=pd.read_excel(file)
-        print(df)
-    return render(request,"upload_file.html")

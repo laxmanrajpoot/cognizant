@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="c"> 
-<form name="f" method="post" enctype="multipart/form-data" action="{% url 'file' %}">
+<form name="f" method="post" enctype="multipart/form-data" action="{% url 'Associatexls' %}">
     <h2 style="color: red;">Select Excel file </h2></br>
             {% csrf_token %}
 <input type="file" name="file1"  accept=".xlsx,.xls"/><br>

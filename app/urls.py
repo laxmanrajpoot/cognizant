@@ -9,5 +9,4 @@ urlpatterns = [
     path("sucess",views.sucess,name="sucess"),
     path("Associatexls",views.Associatexls,name="Associatexls"),
     path("leave1",views.leave1,name="leave1"),
-    path("file",views.file,name="file"),
 ]
