@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/css/Form_css.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+
+   <title>Add Associate</title>
+  
+</head>
+<body>
+    
+    <div class="container">
+        <header>Add Associate</header>
+        
+        <form name="data"  id="form1" method="post"   action="{% url 'form_view' %}">
+          {% csrf_token %}
+                    <div class="fields">
+                        <div class="input-field">
+                            <label >Sub Departments </label>
+                            <input type="text" placeholder="Enter your Department" name="Sdepartment" >
+                        </div>
+                        <div class="input-field">
+                            <label>AIA AVM</label>
+                            <input type="text" placeholder="Enter"name="Avm" >
+                        </div>
+
+                        <div class="input-field">
+                            <label>Associate ID</label>
+                            <input type="number" placeholder="Enter your ID" name="Associate_id" >
+                        </div>
+
+                        <div class="input-field">
+                            <label>Name</label>
+                            <input type="text" placeholder="Enter Name" name="Name" >
+                        </div>
+                        <div class="input-field">
+                            <label>Grade</label>
+                            <input type="text" placeholder="Enter Grade" name="Grade" >
+                        </div>
+                        <div class="input-field">
+                            <label>Bu Classified</label>
+                            <input type="text" placeholder="Enter Bu" name="Bu" >
+                        </div>
+                        <div class="input-field">
+                            <label>Project ID</label>
+                            <input type="number" placeholder="Enter Project ID" name="Project_id" >
+                        </div>
+
+                        <div class="input-field">
+                            <label>Project Name</label>
+                            <input type="text" placeholder="Enter your Project Name" name="Project_name" >
+                        </div>
+                        <div class="input-field">
+                            <label>Grid Classification</label>
+                            <input type="text" placeholder="Enter Classification" name="Classification" >
+                        </div>
+                        <div class="input-field">
+                            <label>PM ID</label>
+                            <input type="number" placeholder="Enter your PM ID" name="Pm_id" >
+                        </div>
+                        <div class="input-field">
+                            <label>PM Name</label>
+                            <input type="text" placeholder="Enter PM Name" name="Pm_name" >
+                        </div>
+                        <div class="input-field">
+                            <label>Account ID</label>
+                            <input type="number" placeholder="Enter Account ID" name="Account_id" >
+                        </div>
+                        <div class="input-field">
+                            <label>Account Name</label>
+                            <input type="text" placeholder="Enter Name" name="Account_name" >
+                        </div>
+                        <div class="input-field">
+                            <label>Parent Customer ID</label>
+                            <input type="number" placeholder="Enter Id" name="Customer_id" >
+                        </div>
+                        <div class="input-field">
+                            <label>Parent Customer</label>
+                            <input type="text" placeholder="Enter Parent Name" name="Parent_cus" >
+                        </div>
+                        <div class="input-field">
+                            <label>Primary Tag</label>
+                            <input type="text" placeholder="Enter tag" name="Ptag" >
+                        </div>
+                        <div class="input-field">
+                            <label>Secondary Tag</label>
+                            <input type="text" placeholder="Enter Secondary Tag" name="Stag" >
+                        </div>
+                        <div class="input-field">
+                            <label>Home Manager ID</label>
+                            <input type="number" placeholder="Enter HM ID"name="Hm_id" >
+                        </div>
+                        <div class="input-field">
+                            <label>Billability Status</label>
+                            <input type="text" placeholder="Enter Status" name="Billability" >
+                        </div>
+                        <div class="input-field">
+                            <label>Country</label>
+                            <input type="text" placeholder="Country" name="Country">
+                        </div>
+                        <div class="input-field">
+                            <label>State</label>
+                            <input type="text" placeholder="State" name="State" >
+                        </div>
+                        <div class="input-field">
+                            <label>City</label>
+                            <input type="text" placeholder="City" name="City" >
+                        </div>
+                        <div class="input-field">
+                            <label>Office Location</label>
+                            <input type="text" placeholder="Enter Location" name="Office_loc" >
+                        </div>
+                        <div class="input-field">
+                            <label>Ons Off</label>
+                            <input type="text" placeholder="Enter" name="Ons_off" >
+                        </div>
+                        <div class="input-field">
+                            <label>Assignment Start Date </label>
+                            <input type="date" name="Start_date" >
+                        </div>
+                        <div class="input-field">
+                            <label>Assignment End Date</label>
+                            <input type="date" name="End_date" >
+                        </div>
+                        <div class="input-field">
+                            <label>Assignment Status</label>
+                            <input type="text" placeholder="Enter Status" name="Assignment_status" >
+                        </div>
+                        <div class="input-field">
+                            <label>Percent Allocation</label>
+                            <input type="number" placeholder="Enter" name="Percent_all" >
+                        </div>
+                        <div class="input-field">
+                            <label>Department Name</label>
+                            <input type="text" placeholder="Enter Department" name="Department" >
+                        </div>
+                        <div class="input-field">
+                            <label>Sub Vertical</label>
+                            <input type="text" placeholder="Enter Vertical"name="Vertical" >
+                        </div>
+                        <div class="input-field">
+                            <label>Project Start Date</label>
+                            <input type="date" name="Pstart_date" >
+                        </div>
+                        <div class="input-field">
+                            <label>Project End Date</label>
+                            <input type="date" name="Pend_date" >
+                        </div>
+                        <div class="input-field">
+                            <label>Market NA GGM Classified</label>
+                            <input type="text" placeholder="Enter" name="Market_na" >
+                        </div>
+                        <div class="input-field">
+                            <label>Market</label>
+                            <input type="text" placeholder="Market" name="Market" >
+                        </div>
+                        <div class="input-field">
+                            <label>Market Unit</label>
+                            <input type="text" placeholder="Enter Market Unit" name="Market_unit" >
+                        </div>
+                        <div class="input-field">
+                            <label>Pool ID</label>
+                            <input type="number" placeholder="Enter Pool ID" name="Poll_id" >
+                        </div>  
+                </div>
+                    <button type="submit" class="nextBtn">Submit</button>   
+        </form>
+        
+<!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<script>
+    {% for flashmsg in messages %}
+     alertify.set('notifier','position', 'top-right');
+    alertify.success('{{flashmsg}}');
+    {% endfor %}
+    document.getElementById("form1").reset();
+</script>
+        
+    </div>
+</body>
+</html>

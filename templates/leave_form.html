@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/css/Form_css.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   
+     <!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+</head>
+<body>
+    <div class="container">
+        <header>Add Leave Data</header>
+        
+        <form name="data2"  id="form2" method="post" action="{% url 'leave1' %}">
+          {% csrf_token %}
+                    <div class="fields">
+                        <div class="input-field">
+                            <label >Team</label>
+                            <input type="text" placeholder="Enter team Name" name="Team" required >
+                        </div>
+                        <div class="input-field">
+                            <label>Associate ID</label>
+                            <input type="number" placeholder="Enter Associate ID"name="Associate_id"  required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Name</label>
+                            <input type="text" placeholder="Enter your Name" name="Name" required >
+                        </div>
+
+                        <div class="input-field">
+                            <label>Enter January leave </label>
+                            <input type="number" placeholder="Enter No of leaves" name="Jan"  >
+                        </div>
+                        <div class="input-field">
+                            <label>Enter Feburary Leave</label>
+                            <input type="number" placeholder="Enter No of leaves" name="Feb" >
+                        </div>
+                        <div class="input-field">
+                            <label>Enter March Leave</label>
+                            <input type="number" placeholder="Enter No of leaves" name="Mar" >
+                        </div>
+                        <div class="input-field">
+                            <label>Enter April Leave</label>
+                            <input type="number" placeholder="Enter No of leaves" name="Apr"  >
+                        </div>
+
+                        <div class="input-field">
+                            <label>Enter May Leave</label>
+                            <input type="number" placeholder="Enter No of leaves" name="May"  >
+                        </div>
+                        <div class="input-field">
+                            <label>Enter June Leave</label>
+                            <input type="number" placeholder="Enter No of leaves" name="Jun" >
+                        </div>
+                        <div class="input-field">
+                            <label>Enter July Leave</label>
+                            <input type="number" placeholder="Enter No of leaves" name="Jul"  >
+                        </div>
+                        <div class="input-field">
+                            <label>Enter August leave</label>
+                            <input type="number" placeholder="Enter No of leaves" name="Aug"  >
+                        </div>
+                        <div class="input-field">
+                            <label>Enter September leave</label>
+                            <input type="number" placeholder="Enter No of leaves" name="Sep" >
+                        </div>
+                        <div class="input-field">
+                            <label>Enter October Leave</label>
+                            <input type="number" placeholder="Enter No of leaves" name="Oct" >
+                        </div>
+                        <div class="input-field">
+                            <label>Enter November Leave</label>
+                            <input type="number" placeholder="Enter No of leaves" name="Nov" >
+                        </div>
+                        <div class="input-field">
+                            <label>Enter December Leave</label>
+                            <input type="number" placeholder="Enter No of leaves" name="Dec" >
+                        </div>
+                      
+                </div>
+                    <button type="submit"class="nextBtn">Submit</button>   
+        </form>
+        <!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<script>
+    {% for flashmsg in messages %}
+     alertify.set('notifier','position', 'top-right');
+    alertify.success('{{flashmsg}}');
+    {% endfor %}
+    document.getElementById("form2").reset();
+</script>
+        
+    </div>
+</body>
+</html>
