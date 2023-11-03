@@ -18,7 +18,7 @@
     <div class="container">
         <header>Add Associate</header>
         
-        <form name="data"  id="form1" method="post"   action="{% url 'form_view' %}">
+        <form name="data"  id="form1" method="post"   action="{% url 'add_user' %}">
           {% csrf_token %}
                     <div class="fields">
                         <div class="input-field">
@@ -78,7 +78,7 @@
                         </div>
                         <div class="input-field">
                             <label>Parent Customer ID</label>
-                            <input type="number" placeholder="Enter Id" name="Customer_id" required>
+                            <input type="number" placeholder="Enter ID" name="Customer_id" required>
                         </div>
                         <div class="input-field">
                             <label>Parent Customer</label>

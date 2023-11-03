@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/static/css/index_css.css">
+<style>
+.c
+{
+    margin: left 300px; ;
+    margin: 200px;
+    margin-top: 100;
+    color:green ;
+}
+</style>
+    </head>
+    <body>
+        <div class="c"> 
+<form name="f" method="post" enctype="multipart/form-data" action="{% url 'Associatexls' %}">
+    <h2 style="color: red;">Select Excel file </h2></br>
+            {% csrf_token %}
+<input type="file" name="file1"  accept=".xlsx,.xls"/><br>
+<button type="submit" >Submit</button>
+</form>
+</div>
+<body>
+</html>

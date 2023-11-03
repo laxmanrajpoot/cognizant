@@ -39,8 +39,7 @@ class Associate(models.Model):
     Market_Unit=models.CharField(max_length=25)
     Poll_ID=models.IntegerField()
 
-    def __str__(self):
-        return "{} {} {} ".format(self.Associate_ID, self.Associate_Name,  self.Project_Name)
+    
 
 class leave(models.Model):
     Team=models.CharField(max_length=20)
@@ -58,7 +57,5 @@ class leave(models.Model):
     Oct=models.IntegerField(default=0)
     Nov=models.IntegerField(default=0)
     Dec=models.IntegerField(default=0)
-    Total=models.IntegerField(default=0)
+    Total_Leaves=models.IntegerField(default=0)
 
-    def __str__(self):
-         return "{}      {}".format(self.Emp_num,self.Name)
