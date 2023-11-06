@@ -1,104 +1,54 @@
-<!DOCTYPE HTML>
 <html>
-<head>
-	<meta charset="utf-8" />
-	<title>Upload Data</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js">
-
-
-    </script>
-</head>
-<body>
-    <div class="container">
-    	<h3 class="text-center mt-4 mb-4">Select Excel File To Upload</h3>
-    	<div class="card">
-    		<div class="card-header"><b>Select Excel File</b></div>
-    		<div class="card-body">
-                <form action="{% url 'upload_file' %}" name="form1" enctype="multipart/form-data" method="post">
-                    {% csrf_token %}
-    		
-                <input type="file" id="excel_file" name="file" />
-                <input Type="submit" style="background-color: #262628; font-weight: 500;color: white; margin-top: 1px; margin-left: 300px; border-radius: 5px;">
-    		</div>
-        </form> 
-
-    	</div>
-        <div id="excel_data" class="mt-5"></div>
-    </div>
-</body>
-</html>
-
+    <head>
+        <link rel="stylesheet" href="/static/css/index_css.css">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
 <script>
+    function clearFileInput(id) 
+{ 
+    var oldInput = document.getElementById(id); 
 
-const excel_file = document.getElementById('excel_file');
+    var newInput = document.createElement("input"); 
 
-excel_file.addEventListener('change', (event) => {
+    newInput.type = "file"; 
+    newInput.id = oldInput.id; 
+    newInput.name = oldInput.name; 
+    newInput.className = oldInput.className; 
+    newInput.style.cssText = oldInput.style.cssText; 
+    // TODO: copy any other relevant attributes 
 
-    if(!['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'].includes(event.target.files[0].type))
-    {
-        document.getElementById('excel_data').innerHTML = '<div class="alert alert-danger">Only .xlsx or .xls file format are allowed</div>';
+    oldInput.parentNode.replaceChild(newInput, oldInput); 
+}
 
-        excel_file.value = '';
-
-        return false;
-    }
-
-    var reader = new FileReader();
-
-    reader.readAsArrayBuffer(event.target.files[0]);
-
-    reader.onload = function(event){
-
-        var data = new Uint8Array(reader.result);
-
-        var work_book = XLSX.read(data, {type:'array'});
-
-        var sheet_name = work_book.SheetNames;
-
-        var sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[0]], {header:1});
-
-        if(sheet_data.length > 0)
-        {
-            var table_output = '<table class="table table-striped table-bordered">';
-
-            for(var row = 0; row < sheet_data.length; row++)
-            {
-
-                table_output += '<tr>';
-
-                for(var cell = 0; cell < sheet_data[row].length; cell++)
-                {
-
-                    if(row == 0)
-                    {
-
-                        table_output += '<th>'+sheet_data[row][cell]+'</th>';
-
-                    }
-                    else
-                    {
-
-                        table_output += '<td>'+sheet_data[row][cell]+'</td>';
-
-                    }
-
-                }
-
-                table_output += '</tr>';
-
-            }
-
-            table_output += '</table>';
-
-            document.getElementById('excel_data').innerHTML = table_output;
-        }
-
-        excel_file.value = '';
-
-    }
-
-});
-
-</script> 
+clearFileInput("file");
+</script>
+<style>
+.c
+{
+    margin: left 300px; ;
+    margin: 200px;
+    margin-top: 100;
+    color:green ;
+}
+</style>
+    </head>
+    <body>
+        <div class="c"> 
+<form name="f" id="form1" method="post" enctype="multipart/form-data" action="{% url 'upload_file' %}">
+    <h2 style="color: red;">Select Excel file </h2></br>
+            {% csrf_token %}
+<input type="file" id="file" name="file" accept=".xls,.xlsx" /><br>
+<button type="submit" >Submit</button>
+</form>
+<!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<script>
+    {% for flashmsg in messages %}
+     alertify.set('notifier','position', 'top-right');
+    alertify.success('{{flashmsg}}');
+    {% endfor %}
+</script>
+</div>
+<body>
+</html>

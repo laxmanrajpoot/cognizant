@@ -68,23 +68,6 @@ def add_user(request):
         pass
     return render(request,"form.html")
 
-def upload_file(request):
-    if request.method=='POST':
-        res1=res()
-        dataset=Dataset()
-        file = request.FILES['file']
-        d=dataset.load(file.read(),format='xlsx')
-        for data in d:
-            value=Associate(
-                data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7],data[8],data[9],data[10],data[11],data[12],data[13],data[14],
-                data[15],data[16],data[17],data[18],data[19],data[20],data[21],data[22],data[23],data[24],data[25],data[26],data[27],data[28],data[29],
-                data[30],data[31],data[32],data[33],data[34],data[35],data[36]
-
-            )
-            value.save()
-    return render(request,"upload_file.html")
-
-
 
 def sucess(request):
     return render(request,"sucess.html")
@@ -120,3 +103,27 @@ def leave1(request):
     return render(request,"leave_form.html")
 
 
+def upload_file(request):
+    try:
+        if request.method=='POST':
+            res1=res()
+            dataset=Dataset()
+            file = request.FILES['file']
+            if not file.name.endswith('xlsx' or 'xls'):
+                 messages.info(request,"Invalid Format")
+                 return render(request,"upload_file.html")
+                
+
+            d=dataset.load(file.read(),format='xlsx')
+            for data in d:
+                value=Associate(
+                    data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7],data[8],data[9],data[10],
+                    data[11],data[12], data[13],data[14],data[15],data[16],data[17],data[18],data[19],data[20],data[21],
+                    data[22],data[23],data[24],data[25],data[26],data[27],data[28],data[29],data[30],data[31],data[32],data[33],data[34],data[35],data[36]
+
+                )
+                value.save()
+            messages.info(request,"data imported sucessfully")
+    except:
+        pass
+    return render(request,"upload_file.html")
