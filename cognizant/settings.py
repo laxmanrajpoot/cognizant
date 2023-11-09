@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'import_export',
-    'django_tables2',
 ]
 
 MIDDLEWARE = [

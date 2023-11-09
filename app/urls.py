@@ -7,5 +7,6 @@ urlpatterns = [
     path("upload_file",views.upload_file,name="upload_file"),
     path("sucess",views.sucess,name="sucess"),
     path("leave1",views.leave1,name="leave1"),
+    path("upload_file2",views.upload_file2,name='upload_file2'),
     
 ]

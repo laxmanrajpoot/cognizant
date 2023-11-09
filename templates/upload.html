@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/static/css/index_css.css">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+<script>
+    function clearFileInput(id) 
+{ 
+    var oldInput = document.getElementById(id); 
+
+    var newInput = document.createElement("input"); 
+
+    newInput.type = "file"; 
+    newInput.id = oldInput.id; 
+    newInput.name = oldInput.name; 
+    newInput.className = oldInput.className; 
+    newInput.style.cssText = oldInput.style.cssText; 
+    // TODO: copy any other relevant attributes 
+
+    oldInput.parentNode.replaceChild(newInput, oldInput); 
+}
+
+clearFileInput("file");
+</script>
+<style>
+.c
+{
+    margin: left 300px; ;
+    margin: 200px;
+    margin-top: 100;
+    color:green ;
+}
+</style>
+    </head>
+    <body>
+        <div class="c"> 
+<form name="f" id="form1" method="post" enctype="multipart/form-data" action="{% url 'upload_file2' %}">
+    <h2 style="color: red;">Select Excel file </h2></br>
+            {% csrf_token %}
+<input type="file" id="file" name="file" accept=".xls,.xlsx" /><br>
+<button type="submit" >Submit</button>
+</form>
+<!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<script>
+    {% for flashmsg in messages %}
+     alertify.set('notifier','position', 'top-right');
+    alertify.success('{{flashmsg}}');
+    {% endfor %}
+</script>
+</div>
+<body>
+</html>

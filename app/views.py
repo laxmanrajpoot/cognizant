@@ -1,13 +1,10 @@
 # Create your views here.
 from django.shortcuts import render,HttpResponse,HttpResponseRedirect
 import pandas as pd
-from openpyxl import load_workbook
 from .models import *
 from django.contrib import messages
-import django_tables2 as table
 from tablib import Dataset
 from  .resources import res
-from django.http import HttpResponse
 
 
 def index(request):
@@ -102,15 +99,14 @@ def leave1(request):
         pass
     return render(request,"leave_form.html")
 
-
 def upload_file(request):
     try:
         if request.method=='POST':
             res1=res()
             dataset=Dataset()
             file = request.FILES['file']
-            if not file.name.endswith('xlsx' or 'xls'):
-                 messages.info(request,"Invalid Format")
+            if not file.name.endswith('xlsx' ):
+                 messages.info(request,"Wrong File Format")
                  return render(request,"upload_file.html")
                 
 
@@ -125,5 +121,26 @@ def upload_file(request):
                 value.save()
             messages.info(request,"data imported sucessfully")
     except:
-        pass
+        messages.info(request,"Wrong Format")
     return render(request,"upload_file.html")
+
+def upload_file2(request):
+    try:
+        if request.method=='POST':
+            dataset=Dataset()
+            file = request.FILES['file']
+            if not file.name.endswith('xlsx' ):
+                messages.info(request,"Wrong File Format")
+                return render(request,"upload.html")
+
+            d=dataset.load(file.read(),format='xlsx')
+            for data in d:
+                value=leave(
+                    data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7],data[8],data[9],data[10],
+                    data[11],data[12],data[13],data[14],data[15],data[16]
+                )
+                value.save()
+            messages.info(request,"data imported sucessfully")
+    except:
+        messages.info(request,"Wrong Format")
+    return render(request,"upload.html")
