@@ -1,11 +1,10 @@
 # Create your views here.
-from django.shortcuts import render,HttpResponse,HttpResponseRedirect
+from django.shortcuts import render,HttpResponse,redirect
 import pandas as pd
 from .models import *
 from django.contrib import messages
 from tablib import Dataset
 from  .resources import res
-
 
 def index(request):
     return render(request,"index.html")
@@ -109,7 +108,6 @@ def upload_file(request):
                  messages.info(request,"Wrong File Format")
                  return render(request,"upload_file.html")
                 
-
             d=dataset.load(file.read(),format='xlsx')
             for data in d:
                 value=Associate(
@@ -120,16 +118,18 @@ def upload_file(request):
                 )
                 value.save()
             messages.info(request,"data imported sucessfully")
+           
     except:
         messages.info(request,"Wrong Format")
     return render(request,"upload_file.html")
+
 
 def upload_file2(request):
     try:
         if request.method=='POST':
             dataset=Dataset()
             file = request.FILES['file']
-            if not file.name.endswith('xlsx' ):
+            if not file.name.endswith('xlsx'):
                 messages.info(request,"Wrong File Format")
                 return render(request,"upload.html")
 
